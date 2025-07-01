@@ -12,6 +12,6 @@
     rgba(20, 20, 20, 0.95),  /* near black */
     rgba(40, 40, 40, 0.95)   /* soft dark gray */
   );
-  background-size: 200% 200%;
+  background-size: 400% 400%;
   animation: aurora 20s ease  infinite;
 }
