@@ -86,6 +86,7 @@ const Home = () => {
             <img
               src={Service.getPreview(post.featured_image)}
               alt={post.title}
+              loading="lazy"
               onClick={() => setPreviewImg(Service.getPreview(post.featured_image))}
               className="w-full h-48 object-cover cursor-pointer"
             />
