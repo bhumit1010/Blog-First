@@ -34,8 +34,8 @@ const Login = () => {
   if (auth) return <Navigate to="/" />;
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center px-4 bg-aurora">
-      <div className="w-full max-w-md bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl p-8 text-white">
+    <div className="min-h-screen backdrop-blur-lg w-full flex items-center justify-center px-4 bg-aurora">
+      <div className="w-full max-w-md bg-white/5  border border-gray-400/40 rounded-2xl shadow-xl p-8 text-white">
         <h2 className="text-3xl font-bold mb-6 text-center">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input

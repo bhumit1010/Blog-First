@@ -7,17 +7,11 @@
 .bg-aurora {
  background: linear-gradient(
     -135deg,
-    rgba(30, 30, 30, 0.95),  /* very dark gray */
-    rgba(60, 60, 60, 0.9),   /* dark medium gray */
-    rgba(20, 20, 20, 0.95),  /* near black */
-    rgba(40, 40, 40, 0.95)   /* soft dark gray */
+    rgba(30, 30, 30, 0.95),  
+    rgba(60, 60, 60, 0.9),   
+    rgba(20, 20, 20, 0.95),  
+    rgba(40, 40, 40, 0.95)   
   );
-  background-size: 200% 200%;
-  animation: aurora 20s ease  infinite;
-}
-@media (max-width: 768px) {
-  .bg-aurora{
-      background-size: 400% 400%;
-
-  }
+  background-size: 300% 300%;
+  animation: aurora 20s ease  infinite; 
 }
