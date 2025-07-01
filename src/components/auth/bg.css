@@ -1,0 +1,17 @@
+@keyframes aurora {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bg-aurora {
+ background: linear-gradient(
+    -135deg,
+    rgba(30, 30, 30, 0.95),  /* very dark gray */
+    rgba(60, 60, 60, 0.9),   /* dark medium gray */
+    rgba(20, 20, 20, 0.95),  /* near black */
+    rgba(40, 40, 40, 0.95)   /* soft dark gray */
+  );
+  background-size: 200% 200%;
+  animation: aurora 20s ease  infinite;
+}
