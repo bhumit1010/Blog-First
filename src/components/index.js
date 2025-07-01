@@ -1,5 +1,5 @@
 import Register from "./auth/ragister";
-import Footer from "./footer/footer";
+import Footer from "./footer/Footer";
 import Header from "./header/header";
 import About from "./pages/about";
 import Contact from "./pages/contact";
