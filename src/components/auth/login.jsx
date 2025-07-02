@@ -4,29 +4,35 @@ import { login, logout } from "../../fetures/authslice";
 import { Navigate, useNavigate } from "react-router-dom";
 import Authservice from "../../appwrite/auth";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import "./bg.css"
+import "./bg.css";
+
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth.status);
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
+  const [message, setMessage] = useState({ text: "", type: "" }); // type: "error" or "success"
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessage({ text: "", type: "" });
+
     try {
       const session = await Authservice.login(form.email, form.password);
       if (session) {
         dispatch(login(session));
-        navigate("/");
+        setMessage({ text: "Login successful!", type: "success" });
+        setTimeout(() => navigate("/"), 1000); // slight delay before redirect
       }
     } catch (error) {
       console.error("Login failed:", error.message);
       dispatch(logout());
       await Authservice.logout();
+      setMessage({ text: "Login failed. Check your credentials.", type: "error" });
       setForm({ email: "", password: "" });
     }
   };
@@ -35,8 +41,21 @@ const Login = () => {
 
   return (
     <div className="min-h-screen backdrop-blur-lg w-full flex items-center justify-center px-4 bg-aurora">
-      <div className="w-full max-w-md bg-white/5  border border-gray-400/40 rounded-2xl shadow-xl p-8 text-white">
+      <div className="w-full max-w-md bg-white/5 border border-gray-400/40 rounded-2xl shadow-xl p-8 text-white">
         <h2 className="text-3xl font-bold mb-6 text-center">Login</h2>
+
+        {message.text && (
+          <div
+            className={`mb-4 text-center py-2 px-3 rounded-lg text-sm font-medium ${
+              message.type === "error"
+                ? "bg-red-500/30 text-red-300"
+                : "bg-green-500/20 text-green-300"
+            }`}
+          >
+            {message.text}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="email"
@@ -71,6 +90,7 @@ const Login = () => {
             Login
           </button>
         </form>
+
         <p className="mt-4 text-center text-sm text-white/70">
           Don’t have an account?{" "}
           <span
